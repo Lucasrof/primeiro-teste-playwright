@@ -1,8 +1,12 @@
 import re
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, Playwright, expect
 
 
-def test_has_title(page: Page):
+def test_has_title(playwright: Playwright):
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    context.tracing.start(screenshots=True, snapshots=True, sources=True)
+    page = context.new_page()
     page.goto("https://playwright.dev/")
 
     #Expect a title "to contain" a substring.
