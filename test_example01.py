@@ -3,7 +3,7 @@ from playwright.sync_api import Page, Playwright, expect
 
 
 def test_has_title(playwright: Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
