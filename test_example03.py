@@ -4,7 +4,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 
 def teste_example03(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
